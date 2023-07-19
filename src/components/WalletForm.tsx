@@ -15,7 +15,7 @@ function WalletForm() {
   const id = useSelector((state: RootReducer) => state.wallet);
 
   useEffect(() => {
-    dispatch(fetchCurrencies());
+    dispatch(fetchCurrencies() as any);
   }, [dispatch]);
 
   const handleSubmit = (e: any) => {
@@ -71,9 +71,9 @@ function WalletForm() {
           <label>
             Currency:
             <select value={ currency } onChange={ (e) => setCurrency(e.target.value) }>
-              {currencies.map((currency) => (
-                <option key={ currency } value={ currency }>
-                  {currency}
+              {currencies.map((curr) => (
+                <option key={ curr } value={ curr }>
+                  {curr}
                 </option>
               ))}
             </select>

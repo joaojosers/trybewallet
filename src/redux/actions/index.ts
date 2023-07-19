@@ -1,7 +1,7 @@
 // Coloque aqui suas actions
 // import {  } from '../../types';
 
-import { AnyAction } from 'redux';
+import { AnyAction, Dispatch } from 'redux';
 
 export const EMAIL_DATA = 'EMAIL_DATA';
 export const PASSWORD_DATA = 'PASSWORD_DATA';
@@ -31,7 +31,7 @@ export const totalExpense = (expenses: any) => {
 };
 
 export const fetchCurrencies = () => {
-  return async (dispatch) => {
+  return async (dispatch: Dispatch) => {
     try {
       const response = await fetch('https://economia.awesomeapi.com.br/json/all');
       const data = await response.json();
