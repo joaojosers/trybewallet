@@ -1,7 +1,7 @@
 // Coloque aqui suas actions
 // import {  } from '../../types';
 
-export const EMAIL_DATA = ' EMAIL_DATA';
+export const EMAIL_DATA = 'EMAIL_DATA';
 export const PASSWORD_DATA = 'PASSWORD_DATA';
 
 export const emailData = (email: any) => {

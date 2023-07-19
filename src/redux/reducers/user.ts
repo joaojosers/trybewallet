@@ -12,7 +12,7 @@ export default (state = INITIAL_STATE, action: AnyAction) => {
   switch (action.type) {
     case EMAIL_DATA:
       return { ...state,
-        ...action.payload,
+        email: action.payload,
       };
 
     case PASSWORD_DATA:

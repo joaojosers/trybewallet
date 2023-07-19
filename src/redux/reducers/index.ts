@@ -7,7 +7,7 @@ import user from './user';
 // ATENÇÃO: você obrigatoriamente tem que utilizar as chaves "user" e "wallet" no seu estado global
 
 const rootReducer = combineReducers({
-  emailData: user, passwordData: user,
+  user,
 });
 
 export default rootReducer;
