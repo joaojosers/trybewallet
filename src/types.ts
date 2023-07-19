@@ -8,4 +8,6 @@ export type RootReducer = {
 };
 export type WalletReducer = {
   total: number,
+  currencies: [],
+  expenses: [],
 };
