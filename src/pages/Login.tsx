@@ -25,21 +25,21 @@ function Login() {
       <section>
         <form>
           <label htmlFor="emailInput">
-            E-Mail:
+            E-Mail
             <input
               type="email"
-              placeholder="Username"
+              placeholder="E-Mail"
               data-testid="email-input"
               value={ email }
               onChange={ (event) => setEmail(event.target.value) }
             />
           </label>
           <label>
-            Senha:
+            Senha
             <input
               type="password"
               minLength={ 6 }
-              placeholder="Password"
+              placeholder="Senha"
               data-testid="password-input"
               value={ password }
               onChange={ (event) => setPassword(event.target.value) }
