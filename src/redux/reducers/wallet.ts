@@ -11,6 +11,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action: AnyAction) => {
   switch (action.type) {
     case ADD_EXPENSE:
+      console.log({ payload: action.payload });
       return {
         ...state,
         expenses: [...state.expenses, action.payload],

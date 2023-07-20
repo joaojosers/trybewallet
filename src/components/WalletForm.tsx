@@ -7,8 +7,8 @@ function WalletForm() {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [currency, setCurrency] = useState('USD'); // Defina o valor padrão como BRL
-  const [paymentMethod, setPaymentMethod] = useState('');
-  const [category, setCategory] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('Dinheiro');
+  const [category, setCategory] = useState('Alimentação');
 
   const { currencies } = useSelector((state: RootReducer) => state.wallet);
   const dispatch = useDispatch();
@@ -26,18 +26,18 @@ function WalletForm() {
       description,
       value,
       currency,
-      paymentMethod,
+      method: paymentMethod,
       category,
     };
 
-    dispatch(addExpense(expense));
+    dispatch(addExpense(expense) as any);
 
     // Limpe os campos do formulário após a adição da despesa
     setDescription('');
     setValue('');
-    setCurrency('');
-    setPaymentMethod('');
-    setCategory('');
+    setCurrency('USD');
+    setPaymentMethod('Dinheiro');
+    setCategory('Alimentação');
   };
 
   return (

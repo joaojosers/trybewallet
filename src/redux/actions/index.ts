@@ -53,15 +53,20 @@ export const addExpense = (expense: any) => {
       const data = await response.json();
       delete data.USDT;
       console.log(data);
-      console.log(expense);
+      console.log({ expense });
       const obj = {
         ...expense,
         exchangeRates: data,
       };
-      const ExpVal = (Number(expense.value) * data[expense.currency].ask).toFixed(2);
+      console.log({
+        currency: expense.currency,
+        data,
+        exp: data[expense.currency],
+      });
+      const expVal = (Number(expense.value) * data[expense.currency].ask).toFixed(2);
 
       dispatch({ type: 'ADD_EXPENSE', payload: obj });
-      dispatch({ type: 'TOTAL_EXPENSE', payload: ExpVal });
+      dispatch({ type: 'TOTAL_EXPENSE', payload: expVal });
     } catch (error) {
       // Trate os erros caso a requisição falhe
       console.error('Error fetching currencies:', error);
