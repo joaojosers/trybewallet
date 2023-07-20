@@ -35,8 +35,8 @@ export const fetchCurrencies = () => {
     try {
       const response = await fetch('https://economia.awesomeapi.com.br/json/all');
       const data = await response.json();
-
-      const currencies = Object.keys(data);
+      delete data.USDT;
+      const currencies = Object.keys(data).map((key) => key);
 
       dispatch({ type: 'FETCH_CURRENCIES', payload: currencies });
     } catch (error) {
@@ -47,5 +47,24 @@ export const fetchCurrencies = () => {
 };
 
 export const addExpense = (expense: any) => {
-  return { type: 'ADD_EXPENSE', payload: expense };
+  return async (dispatch: Dispatch) => {
+    try {
+      const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+      const data = await response.json();
+      delete data.USDT;
+      console.log(data);
+      console.log(expense);
+      const obj = {
+        ...expense,
+        exchangeRates: data,
+      };
+      const ExpVal = (Number(expense.value) * data[expense.currency].ask).toFixed(2);
+
+      dispatch({ type: 'ADD_EXPENSE', payload: obj });
+      dispatch({ type: 'TOTAL_EXPENSE', payload: ExpVal });
+    } catch (error) {
+      // Trate os erros caso a requisição falhe
+      console.error('Error fetching currencies:', error);
+    }
+  };
 };

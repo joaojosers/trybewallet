@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addExpense, fetchCurrencies } from '../redux/actions';
+import { ADD_EXPENSE, addExpense, fetchCurrencies } from '../redux/actions';
 import { RootReducer } from '../types';
 
 function WalletForm() {
@@ -35,7 +35,7 @@ function WalletForm() {
     // Limpe os campos do formulário após a adição da despesa
     setDescription('');
     setValue('');
-    setCurrency('BRL');
+    setCurrency('');
     setPaymentMethod('');
     setCategory('');
   };
@@ -85,31 +85,60 @@ function WalletForm() {
             </select>
           </label>
         </div>
-        <div>
-          <label htmlFor="payment-method">
-            Payment Method
-            <select
-              id="payment-method"
+
+        <label htmlFor="payment-method">
+          Payment Method
+          <select
+            id="payment-method"
               // type="text"
-              data-testid="method-input"
-              value={ paymentMethod }
-              onChange={ (e) => setPaymentMethod(e.target.value) }
-            >
-              Payment Method
-            </select>
-          </label>
-        </div>
-        <div>
-          <label>
-            Category:
-            <input
-              type="text"
-              value={ category }
-              onChange={ (e) => setCategory(e.target.value) }
-            />
-          </label>
-        </div>
-        <button type="submit">Adicionar despesa</button>
+            data-testid="method-input"
+            value={ paymentMethod }
+            onChange={ (e) => setPaymentMethod(e.target.value) }
+          >
+            <option>
+              Dinheiro
+            </option>
+            <option>
+              Cartão de crédito
+            </option>
+            <option>
+              Cartão de débito
+            </option>
+          </select>
+        </label>
+
+        <label>
+          Category:
+          <select
+            data-testid="tag-input"
+            value={ category }
+            onChange={ (e) => setCategory(e.target.value) }
+          >
+            <option>
+              Alimentação
+            </option>
+            <option>
+              Lazer
+            </option>
+            <option>
+              Trabalho
+            </option>
+            <option>
+              Transporte
+            </option>
+            <option>
+              Saúde
+            </option>
+          </select>
+        </label>
+
+        <button
+          type="submit"
+          // onClick={ handleSubmit }
+        >
+          Adicionar despesa
+
+        </button>
       </form>
     </>
   );

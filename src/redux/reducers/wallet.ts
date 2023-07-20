@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { ADD_EXPENSE, FETCH_CURRENCIES } from '../actions';
+import { ADD_EXPENSE, FETCH_CURRENCIES, TOTAL_EXPENSE } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
@@ -20,6 +20,11 @@ export default (state = INITIAL_STATE, action: AnyAction) => {
       return {
         ...state,
         currencies: action.payload,
+      };
+    case TOTAL_EXPENSE:
+      return {
+        ...state,
+        total: action.payload + state.total,
       };
     default:
       return state;
