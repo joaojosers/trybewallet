@@ -16,10 +16,6 @@ describe('testando a aplicação', () => {
       json: async () => (mockData),
     });
   });
-
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
   test('verifica se a tela de login funciona corretamente', async () => {
     renderWithRouterAndRedux(
       <App />,
@@ -100,4 +96,14 @@ describe('testando a aplicação', () => {
 //   test('Este teste também já possui o mock', async () => {
 //     // ...
 //   });
+// });
+
+// beforeEach(() => {
+//   global.fetch = vi.fn().mockResolvedValue({
+//     json: async () => (mockData),
+//   });
+// });
+
+// afterEach(() => {
+//   vi.clearAllMocks();
 // });
