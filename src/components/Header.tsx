@@ -18,17 +18,11 @@ function Header() {
 
         </p>
         <p data-testid="total-field">
-          Total de despesas:
+          {/* Total de despesas: */}
           {total}
         </p>
         <p data-testid="header-currency-field">Moeda: BRL</p>
 
-        {/* <label htmlFor="currency-select">Escolha uma moeda:</label>
-
-        <select name="currency" id="currency-select">
-          <option value="">Escolha uma opção</option>
-          <option value="real">Real</option>
-        </select> */}
       </header>
     </>
   );

@@ -6,7 +6,7 @@ import { RootReducer } from '../types';
 function WalletForm() {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
-  const [currency, setCurrency] = useState('BRL'); // Defina o valor padrão como BRL
+  const [currency, setCurrency] = useState('USD'); // Defina o valor padrão como BRL
   const [paymentMethod, setPaymentMethod] = useState('');
   const [category, setCategory] = useState('');
 
@@ -73,6 +73,8 @@ function WalletForm() {
           <label>
             Currency:
             <select
+              defaultChecked
+              defaultValue={ currency }
               value={ currency }
               onChange={ (e) => setCurrency(e.target.value) }
               data-testid="currency-input"

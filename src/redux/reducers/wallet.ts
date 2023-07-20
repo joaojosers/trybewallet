@@ -24,7 +24,7 @@ export default (state = INITIAL_STATE, action: AnyAction) => {
     case TOTAL_EXPENSE:
       return {
         ...state,
-        total: action.payload + state.total,
+        total: Number(action.payload) + state.total,
       };
     default:
       return state;
