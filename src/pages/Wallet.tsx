@@ -10,6 +10,7 @@ function Wallet() {
       <Header />
       <div>TrybeWallet</div>
       <WalletForm />
+      {/* <Table /> */}
       <h2>Despesas</h2>
       <ul>
         {/* {expenses.map((expense) => (

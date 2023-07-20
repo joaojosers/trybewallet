@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 import App from '../../App';
 import { renderWithRouterAndRedux } from './renderWith';
 import { EMAIL_DATA, PASSWORD_DATA } from '../../redux/actions';

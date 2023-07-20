@@ -52,6 +52,7 @@ function WalletForm() {
             Description:
             <input
               type="text"
+              data-testid="description-input"
               value={ description }
               onChange={ (e) => setDescription(e.target.value) }
             />
@@ -61,6 +62,7 @@ function WalletForm() {
           <label>
             Value:
             <input
+              data-testid="value-input"
               type="number"
               value={ value }
               onChange={ (e) => setValue(e.target.value) }
@@ -70,7 +72,11 @@ function WalletForm() {
         <div>
           <label>
             Currency:
-            <select value={ currency } onChange={ (e) => setCurrency(e.target.value) }>
+            <select
+              value={ currency }
+              onChange={ (e) => setCurrency(e.target.value) }
+              data-testid="currency-input"
+            >
               {currencies.map((curr) => (
                 <option key={ curr } value={ curr }>
                   {curr}
@@ -80,13 +86,17 @@ function WalletForm() {
           </label>
         </div>
         <div>
-          <label>
-            Payment Method:
-            <input
-              type="text"
+          <label htmlFor="payment-method">
+            Payment Method
+            <select
+              id="payment-method"
+              // type="text"
+              data-testid="method-input"
               value={ paymentMethod }
               onChange={ (e) => setPaymentMethod(e.target.value) }
-            />
+            >
+              Payment Method
+            </select>
           </label>
         </div>
         <div>
