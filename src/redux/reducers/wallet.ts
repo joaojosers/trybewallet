@@ -1,11 +1,12 @@
 import { AnyAction } from 'redux';
-import { ADD_EXPENSE, FETCH_CURRENCIES, TOTAL_EXPENSE } from '../actions';
+import { ADD_EXPENSE, FETCH_CURRENCIES, TOTAL_EXPENSE, DELETE_EXPENSE } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
   total: 0,
   currencies: [],
   expenses: [],
+  // id: '',
 };
 
 export default (state = INITIAL_STATE, action: AnyAction) => {
@@ -27,6 +28,12 @@ export default (state = INITIAL_STATE, action: AnyAction) => {
         ...state,
         total: Number(action.payload) + state.total,
       };
+    case 'DELETE_EXPENSE':
+      return {
+        ...state,
+        expenses: state.expenses.filter((expense : any) => expense.id !== action.payload),
+      };
+      // Outros cases para atualização dos gastos, remoção, etc.
     default:
       return state;
   }

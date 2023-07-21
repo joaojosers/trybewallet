@@ -5,6 +5,9 @@ export type UserReducer = {
 export type RootReducer = {
   user: UserReducer,
   wallet: WalletReducer,
+  // ask:string,
+  // id: string,
+  // exchangeRates: string,
 };
 export type WalletReducer = {
   total: number,

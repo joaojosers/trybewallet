@@ -1,14 +1,14 @@
-// configure aqui sua store
-// import { legacy_createStore as createStore } from 'redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import {
   applyMiddleware,
   combineReducers,
   legacy_createStore as createStore } from 'redux';
-import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import user from './reducers/user';
 import wallet from './reducers/wallet';
+
+// configure aqui sua store
 
 const store = createStore(combineReducers(
   { user, wallet },

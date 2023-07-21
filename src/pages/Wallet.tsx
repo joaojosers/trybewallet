@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Header from '../components/Header';
 import WalletForm from '../components/WalletForm';
 import wallet from '../redux/reducers/wallet';
+import Table from '../components/Table';
 
 function Wallet() {
   return (
@@ -10,7 +11,7 @@ function Wallet() {
       <Header />
       <div>TrybeWallet</div>
       <WalletForm />
-      {/* <Table /> */}
+      <Table />
       <h2>Despesas</h2>
       <ul>
         {/* {expenses.map((expense) => (
