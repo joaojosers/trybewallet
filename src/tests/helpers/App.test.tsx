@@ -15,6 +15,7 @@ describe('testando a aplicação', () => {
     global.fetch = vi.fn().mockResolvedValue({
       json: async () => (mockData),
     });
+    const emailSimulated = 'ninguem@ninguem.com';
   });
   test('verifica se a tela de login funciona corretamente', async () => {
     renderWithRouterAndRedux(
@@ -61,7 +62,7 @@ describe('testando a aplicação', () => {
     const inputEmail = screen.getByRole('textbox');
     const inputPassword = screen.getByPlaceholderText(/senha/i);
     const button = screen.getByRole('button', { name: /entrar/i });
-    await userEvent.type(inputEmail, 'ninguem@ninguem.com');
+    await userEvent.type(inputEmail, 'abc@def.com');
     await userEvent.type(inputPassword, '654321');
     await userEvent.click(button);
 
@@ -76,7 +77,67 @@ describe('testando a aplicação', () => {
     const method = screen.getByRole('combobox', { name: /payment method/i });
     expect(method).toBeInTheDocument();
   });
+  test('verifica as funcionalidades da página Table', async () => {
+    renderWithRouterAndRedux(
+      <App />,
+    );
+    const inputEmail = screen.getByRole('textbox');
+    const inputPassword = screen.getByPlaceholderText(/senha/i);
+    const button = screen.getByRole('button', { name: /entrar/i });
+    await userEvent.type(inputEmail, 'def@abc.com');
+    await userEvent.type(inputPassword, '654321');
+    await userEvent.click(button);
+    const desCol = screen.getByRole('columnheader', { name: /descrição/i });
+    expect(desCol).toBeInTheDocument();
+    const tagCol = screen.getByRole('columnheader', { name: /tag/i });
+    expect(tagCol).toBeInTheDocument();
+    const payMethod = screen.getByRole('columnheader', { name: /método de pagamento/i });
+    expect(payMethod).toBeInTheDocument();
+  });
+  test('verifica as funcionalidades da página WalletForm', async () => {
+    renderWithRouterAndRedux(
+      <App />,
+    );
+    const inputEmail = screen.getByRole('textbox');
+    const inputPassword = screen.getByPlaceholderText(/senha/i);
+    const button = screen.getByRole('button', { name: /entrar/i });
+    await userEvent.type(inputEmail, 'ghi@jlm.com');
+    await userEvent.type(inputPassword, '654321');
+    await userEvent.click(button);
+    const descBox = screen.getByRole('textbox', { name: /description:/i });
+    const valueBtn = screen.getByRole('spinbutton', { name: /value:/i });
+    const curBox = screen.getByRole('combobox', { name: /currency:/i });
+    const btn = screen.getByRole('button', { name: /adicionar despesa/i });
+    await userEvent.type(descBox, 'abc');
+    await userEvent.type(valueBtn, '10');
+    await userEvent.type(curBox, 'BRL');
+    await userEvent.click(btn);
+
+    expect(btn).toBeInTheDocument();
+
+    // const formWal = screen.getByText(/walletform/i);
+    // expect(formWal).toBeInTheDocument();
+
+    // const cellField1 = screen.getByRole('cell', { name: /abc/i });
+    // expect(cellField1).toBeInTheDocument();
+  });
 });
+
+// const inputPassword = screen.getByPlaceholderText(/senha/i);
+// const button = screen.getByRole('button', { name: /entrar/i });
+// await userEvent.type(inputEmail,emailSimulated);
+// await userEvent.type(inputPassword, '654321');
+// await userEvent.click(button);
+
+// const title = screen.getByRole('heading', { level: 2, name: /despesas/i });
+// expect(title).toBeInTheDocument();
+// const inputDescription = screen.getByRole('textbox', { name: /description:/i });
+// expect(inputDescription).toBeInTheDocument();
+// const inputValue = screen.getByRole('spinbutton', { name: /value:/i });
+// expect(inputValue).toBeInTheDocument();
+// const currency = screen.getByRole('combobox', { name: /currency:/i });
+// expect(currency).toBeInTheDocument();
+// const method = screen.getByRole('combobox', { name: /payment method/i });
 
 // describe('Testes que precisam de mock', () => {
 //   beforeEach(() => {
