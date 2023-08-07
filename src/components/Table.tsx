@@ -9,9 +9,9 @@ function Table() {
   const dispatch = useDispatch();
   console.log(expenses);
 
-  // const handleDeleteExpense = (expenseId) => {
-  //   dispatch(deleteExpense(expenseId));
-  // };
+  const handleDeleteExpense = (expenseId: string, convertedValue: string) => {
+    dispatch(deleteExpense(expenseId, convertedValue));
+  };
 
   return (
     <>
@@ -50,10 +50,18 @@ function Table() {
                 <td>Real</td>
                 <td>
                   <button>Editar</button>
-                  <button>Excluir</button>
+                  {/* <button onClick={ () => handleEditExpense(id) }>Editar</button> */}
+                  <button
+                    data-testid="delete-btn"
+                    onClick={ () => handleDeleteExpense(expense.id, convertedValue) }
+
+                  >
+                    Excluir
+
+                  </button>
                   {/* <button onClick={ () => handleDeleteExpense(id) }>Excluir</button>
                   <button onClick={ handleEditExpense }>Editar</button> */}
-                  {/* <button onClick={ () => handleEditExpense(id) }>Editar</button> */}
+
                 </td>
               </tr>
             );

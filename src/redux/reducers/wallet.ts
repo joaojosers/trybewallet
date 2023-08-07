@@ -32,6 +32,7 @@ export default (state = INITIAL_STATE, action: AnyAction) => {
       return {
         ...state,
         expenses: state.expenses.filter((expense : any) => expense.id !== action.payload),
+        total: state.total - Number(action.total),
       };
       // Outros cases para atualização dos gastos, remoção, etc.
     default:

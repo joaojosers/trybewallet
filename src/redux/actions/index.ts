@@ -74,8 +74,8 @@ export const addExpense = (expense: any) => {
     }
   };
 };
-export const deleteExpense = (expenseId: any) => {
-  return { type: 'DELETE_EXPENSE', payload: expenseId };
+export const deleteExpense = (expenseId: any, convertedValue: string) => {
+  return { type: 'DELETE_EXPENSE', payload: expenseId, total: convertedValue };
 };
 
 // export const deleteExpense = (expense: any) => {

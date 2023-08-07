@@ -19,7 +19,7 @@ function Header() {
         </p>
         <p data-testid="total-field">
           {/* Total de despesas: */}
-          {total}
+          {Number(Math.abs(total)).toFixed(2)}
         </p>
         <p data-testid="header-currency-field">Moeda: BRL</p>
 
